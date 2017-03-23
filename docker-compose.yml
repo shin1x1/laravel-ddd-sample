@@ -1,0 +1,27 @@
+version: '2'
+services:
+  db:
+    image: postgres:9.6-alpine
+    environment:
+      - POSTGRES_USER=app
+      - POSTGRES_PASSWORD=pass
+      - POSTGRES_DB=app
+      - LC_ALL=C
+  db_test:
+    image: postgres:9.6-alpine
+    environment:
+      - POSTGRES_USER=app
+      - POSTGRES_PASSWORD=pass
+      - POSTGRES_DB=app
+      - LC_ALL=C
+  web:
+    image: shin1x1/docker-php71-apache-postgresql-dev
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www/html
+      - ./docker/web/php.ini:/usr/local/etc/php/php.ini
+      - ./docker/web/.bashrc:/root/.bashrc
+    links:
+      - db
+      - db_test
