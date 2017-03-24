@@ -4,7 +4,7 @@ namespace Acme\Shop\Infrastructure\Eloquents;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class EloquentUser extends Authenticatable
+class User extends Authenticatable
 {
     use Notifiable;
 
