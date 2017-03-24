@@ -1,9 +1,7 @@
 <?php
 namespace Acme\Shop\Domain\Models\Item;
 
-use Illuminate\Contracts\Support\Arrayable;
-
-final class Item implements Arrayable
+final class Item
 {
     /** @var ItemId */
     private $id;
@@ -67,18 +65,5 @@ final class Item implements Arrayable
     public function equals(self $item): bool
     {
         return $this->id()->equals($item->id());
-    }
-
-    /**
-     * @return array
-     */
-    public function toArray()
-    {
-        return [
-            'id' => $this->id()->value(),
-            'name' => $this->name(),
-            'price' => $this->price()->value(),
-            'stock' => $this->stock()->value(),
-        ];
     }
 }
